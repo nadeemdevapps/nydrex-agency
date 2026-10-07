@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Nydrex | Custom Software, Web Apps & Automation",
+      "hasCanvas": false,
+      "bodyTextLen": 4465,
+      "bodyTextHash": "df5565fb66beb4f784f1479fbf23a58db77dd87d3f234cc4296d3daeac3c1c54",
+      "bodyTextPrefix": "Skip to content Nydrex Services Work About Contact Start a proje",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Nydrex | Custom Software, Web Apps & Automation",
+      "hasCanvas": false,
+      "bodyTextLen": 4417,
+      "bodyTextHash": "86931bfa11478749f2ea6681161c5b58969b723aab9546fdf21fb8b37aa90ddd",
+      "bodyTextPrefix": "Skip to content Nydrex Start FOUNDER-LED SOFTWARE STUDIO Ideas b",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

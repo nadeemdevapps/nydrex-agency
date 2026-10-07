@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="Nydrex">
+  <rect width="16" height="16" rx="4" fill="#C6EF7A"/>
+  <g fill="#161616">
+    <rect x="3.75" y="3.25" width="2.3" height="9.5" rx="0.6"/>
+    <rect x="9.95" y="3.25" width="2.3" height="9.5" rx="0.6"/>
+    <polygon points="5.35,3.25 7.65,3.25 12.25,12.75 9.95,12.75"/>
+    <circle cx="4.9" cy="3.7" r="1.35"/>
+    <circle cx="4.9" cy="12.3" r="1.35"/>
+    <circle cx="11.1" cy="3.7" r="1.35"/>
+    <circle cx="11.1" cy="12.3" r="1.35"/>
+  </g>
+</svg>

@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/services",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Services | Nydrex",
+      "hasCanvas": false,
+      "bodyTextLen": 3402,
+      "bodyTextHash": "dec133e80aaca3894acfae261c11d0a2c16281272cb15a7a18bfce65b77a1570",
+      "bodyTextPrefix": "Skip to content Nydrex Services Work About Contact Start a proje",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/services.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Services | Nydrex",
+      "hasCanvas": false,
+      "bodyTextLen": 3364,
+      "bodyTextHash": "ecf6432a18e8aa216c7b528b467103d5cfca9e561790ed680376927aa10ed6ef",
+      "bodyTextPrefix": "Skip to content Nydrex Start SERVICES Custom systems, built arou",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/services-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/services.json"
+}

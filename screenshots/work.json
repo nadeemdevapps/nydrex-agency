@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/work",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Work | Nydrex",
+      "hasCanvas": false,
+      "bodyTextLen": 898,
+      "bodyTextHash": "e07b930aa7aa37a94dc6bcdd8d834bd145b92733fea4d96e292d571e23bc6898",
+      "bodyTextPrefix": "Skip to content Nydrex Services Work About Contact Start a proje",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/work.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Work | Nydrex",
+      "hasCanvas": false,
+      "bodyTextLen": 860,
+      "bodyTextHash": "d9828a238794b8899eac30d0371ffcc614274f45446273d71ae6b01fd245c40c",
+      "bodyTextPrefix": "Skip to content Nydrex Start WORK CASE STUDY CASE STUDY CASE STU",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/work-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/work.json"
+}

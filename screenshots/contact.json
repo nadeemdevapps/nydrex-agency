@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/contact",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Contact | Nydrex",
+      "hasCanvas": false,
+      "bodyTextLen": 1456,
+      "bodyTextHash": "3f8ab449c497d38fe8a84dc9264d26e43d539e0e9e8915164d5deb588e995999",
+      "bodyTextPrefix": "Skip to content Nydrex Services Work About Contact Start a proje",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/contact.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Contact | Nydrex",
+      "hasCanvas": false,
+      "bodyTextLen": 1418,
+      "bodyTextHash": "4c15c1ff1f71dea4e143b30160b0734b41f8fa5cef904e433d654dacb56804e5",
+      "bodyTextPrefix": "Skip to content Nydrex Start CONTACT Tell us what you need built",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/contact-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/contact.json"
+}

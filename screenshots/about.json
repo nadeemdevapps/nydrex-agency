@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/about",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "About | Nydrex",
+      "hasCanvas": false,
+      "bodyTextLen": 1949,
+      "bodyTextHash": "1e391abae4190542b9d50301b591ffff36ae53639df2bd03c4371a05786a1ddd",
+      "bodyTextPrefix": "Skip to content Nydrex Services Work About Contact Start a proje",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/about.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "About | Nydrex",
+      "hasCanvas": false,
+      "bodyTextLen": 1911,
+      "bodyTextHash": "37a990e9a19cb96bb2a264839ca9bea8ec0d93d674c2d15d893a3002b2d91038",
+      "bodyTextPrefix": "Skip to content Nydrex Start ABOUT Small team. Direct involvemen",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/about-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/about.json"
+}
