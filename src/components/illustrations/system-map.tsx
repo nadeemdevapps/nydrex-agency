@@ -12,8 +12,8 @@ export function SystemMap() {
     <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {stages.map((s, i) => (
         <li key={s.label} className="relative">
-          <div className="h-full rounded-[1.4rem] border border-border bg-card p-5 shadow-border">
-            <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
+          <div className="h-full rounded-xl border border-border bg-card p-5 shadow-border">
+            <p className="font-mono text-meta tracking-widest text-muted-foreground uppercase">
               {String(i + 1).padStart(2, "0")}
             </p>
             <p className="mt-3 text-lg font-medium">{s.label}</p>

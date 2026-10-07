@@ -28,7 +28,7 @@ function ContactPage() {
             <ContactForm />
           </div>
           <aside className="lg:col-span-5">
-            <div className="rounded-[1.6rem] border border-border bg-mist p-6 sm:p-8">
+            <div className="rounded-xl border border-border bg-mist p-6 sm:p-8">
               <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
                 WhatsApp
               </p>
@@ -44,7 +44,7 @@ function ContactPage() {
                   >
                     <div className="flex items-baseline justify-between gap-3">
                       <p className="font-medium">{f.name}</p>
-                      <p className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
+                      <p className="font-mono text-micro tracking-widest text-muted-foreground uppercase">
                         {f.primary ? "Primary" : "Founder"}
                       </p>
                     </div>

@@ -113,7 +113,7 @@ function MiniCard({ children }: { children: ReactNode }) {
 
 function PhoneFrame() {
   return (
-    <div className="rounded-[1.6rem] border border-border bg-card p-2 shadow-border">
+    <div className="rounded-xl border border-border bg-card p-2 shadow-border">
       <div className="mx-auto mb-2 h-1.5 w-10 rounded-full bg-mist" />
       <div className="rounded-xl bg-mist p-3">
         <p className="text-xs font-medium">Customer portal</p>

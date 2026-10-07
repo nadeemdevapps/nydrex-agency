@@ -19,25 +19,17 @@ export function ComponentBoard() {
           Found 2 results
         </p>
         <p className="mt-2 text-sm">
-          The <mark className="rounded-sm bg-primary px-0.5">invoice</mark>{" "}
-          intake flow
+          The <mark className="rounded-sm bg-primary px-0.5">invoice</mark> intake flow
         </p>
       </BoardCard>
 
       <BoardCard>
         <div className="mx-auto w-full max-w-56 overflow-hidden rounded-2xl border border-border bg-card text-sm shadow-border">
-          <button type="button" className="block w-full px-4 py-2.5 text-left text-muted-foreground">
-            Edit
-          </button>
-          <button
-            type="button"
-            className="flex w-full items-center justify-between bg-primary px-4 py-2.5 text-left font-medium text-primary-foreground"
-          >
+          <span className="block w-full px-4 py-2.5 text-left text-muted-foreground">Edit</span>
+          <span className="flex w-full items-center justify-between bg-primary px-4 py-2.5 text-left font-medium text-primary-foreground">
             Generate report
-          </button>
-          <button type="button" className="block w-full px-4 py-2.5 text-left text-muted-foreground">
-            Remove
-          </button>
+          </span>
+          <span className="block w-full px-4 py-2.5 text-left text-muted-foreground">Remove</span>
         </div>
       </BoardCard>
 
@@ -110,29 +102,37 @@ export function ComponentBoard() {
           <button
             type="button"
             role="switch"
+            aria-label="Repeat weekly"
             aria-checked={repeat}
             onClick={() => setRepeat((v) => !v)}
-            className={`relative h-6 w-10 rounded-full transition-[background-color] duration-150 ease-out ${repeat ? "bg-primary" : "bg-mist"}`}
+            className="flex size-11 items-center justify-center rounded-lg"
           >
             <span
-              className={`absolute top-0.5 size-5 rounded-full bg-card shadow-border transition-transform duration-150 ease-out ${repeat ? "translate-x-4" : "translate-x-0.5"}`}
-            />
+              className={`relative h-6 w-10 rounded-full transition-[background-color] duration-150 ease-out ${repeat ? "bg-primary" : "bg-mist"}`}
+            >
+              <span
+                className={`absolute top-0.5 left-0 size-5 rounded-full bg-card shadow-border transition-transform duration-150 ease-out ${repeat ? "translate-x-4" : "translate-x-0.5"}`}
+              />
+            </span>
           </button>
         </div>
         <p className="mt-3 text-xs text-muted-foreground">Repeat weekly</p>
-        <div className="mt-3 flex gap-1">
+        <div className="mt-3 grid grid-cols-4 gap-1">
           {days.map((d) => {
             const on = activeDays.includes(d);
             return (
               <button
                 key={d}
                 type="button"
+                aria-pressed={on}
+                aria-label={`Repeat on ${["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][days.indexOf(d)]}`}
+                disabled={!repeat}
                 onClick={() =>
                   setActiveDays((curr) =>
                     curr.includes(d) ? curr.filter((x) => x !== d) : [...curr, d],
                   )
                 }
-                className={`h-8 min-w-0 flex-1 rounded-full text-xs font-medium ${on ? "bg-ink text-secondary-foreground" : "border border-border text-muted-foreground"}`}
+                className={`h-11 min-w-0 rounded-lg text-xs font-medium disabled:opacity-40 ${on ? "bg-ink text-secondary-foreground" : "border border-border text-muted-foreground"}`}
               >
                 {d.slice(0, 2)}
               </button>
@@ -167,7 +167,7 @@ export function ComponentBoard() {
           max={10}
           value={happy}
           onChange={(e) => setHappy(Number(e.target.value))}
-          className="mt-4 w-full accent-ink"
+          className="mt-4 h-11 w-full accent-ink"
           aria-label="Clarity rating"
         />
         <p className="mt-2 text-center font-mono text-sm">{happy} / 10</p>
@@ -176,7 +176,7 @@ export function ComponentBoard() {
       <BoardCard>
         <div className="flex items-center gap-2 rounded-full border border-border bg-mist px-3 py-2 text-sm">
           <span className="rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
-            @nydrex
+            @team
           </span>
           <span>check the flow</span>
         </div>
@@ -195,7 +195,7 @@ export function ComponentBoard() {
 
 function BoardCard({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-[1.6rem] border border-border bg-card p-5 shadow-border min-w-0">
+    <div className="rounded-xl border border-border bg-card p-5 shadow-border min-w-0">
       {children}
     </div>
   );

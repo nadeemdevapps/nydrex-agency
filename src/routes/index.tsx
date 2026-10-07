@@ -54,7 +54,7 @@ function Home() {
         </section>
 
         <section className="border-y border-border">
-          <div className="mx-auto flex max-w-6xl flex-wrap gap-x-8 gap-y-2 px-5 py-4 font-mono text-[11px] tracking-widest text-muted-foreground uppercase sm:px-8">
+          <div className="mx-auto flex max-w-6xl flex-wrap gap-x-8 gap-y-2 px-5 py-4 font-mono text-meta tracking-widest text-muted-foreground uppercase sm:px-8">
             <span>Custom software</span>
             <span>Web apps</span>
             <span>Automation</span>
@@ -76,7 +76,7 @@ function Home() {
           <div className="mt-12">
             <BentoStudio />
           </div>
-          <div className="mt-16 grid gap-px overflow-hidden rounded-[1.6rem] border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <Link
                 key={s.slug}
@@ -176,7 +176,7 @@ function Home() {
             {founders.map((f) => (
               <li
                 key={f.name}
-                className="rounded-[1.6rem] border border-border bg-card p-6 shadow-border"
+                className="rounded-xl border border-border bg-card p-6 shadow-border"
               >
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-primary font-semibold text-primary-foreground">
                   {f.name.slice(0, 1)}

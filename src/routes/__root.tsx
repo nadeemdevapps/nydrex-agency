@@ -7,16 +7,25 @@ import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 import appCss from "../styles.css?url";
 
-const FONT_HREF =
-  "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap";
-
 export const Route = createRootRoute({
-  head: () => ({
+  head: ({ matches }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: site.titles.home },
-      { name: "description", content: site.descriptions.home },
+      {
+        title: matches.some((match) => match.status === "notFound" || match._notFound)
+          ? site.titles.notFound
+          : site.titles.home,
+      },
+      {
+        name: "description",
+        content: matches.some((match) => match.status === "notFound" || match._notFound)
+          ? site.descriptions.notFound
+          : site.descriptions.home,
+      },
+      ...(matches.some((match) => match.status === "notFound" || match._notFound)
+        ? [{ name: "robots", content: "noindex" }]
+        : []),
       { name: "theme-color", content: "#F5F5F2" },
       { name: "author", content: "Nydrex" },
     ],
@@ -25,9 +34,13 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: FONT_HREF },
+      {
+        rel: "preload",
+        href: "/fonts/outfit-latin.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
     ],
   }),
   component: RootDocument,

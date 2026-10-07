@@ -1,9 +1,35 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/outfit-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-regular-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-medium-latin.woff2") format("woff2");
+}
+
 @theme {
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  --text-micro: 0.625rem;
+  --text-meta: 0.6875rem;
 
   --color-background: #f5f5f2;
   --color-foreground: #161616;
@@ -41,8 +67,7 @@
   --shadow-border:
     0 0 0 1px rgb(22 22 22 / 0.06), 0 1px 2px -1px rgb(22 22 22 / 0.06),
     0 2px 8px 0 rgb(22 22 22 / 0.04);
-  --shadow-border-hover:
-    0 0 0 1px rgb(22 22 22 / 0.08), 0 8px 24px -12px rgb(22 22 22 / 0.16);
+  --shadow-border-hover: 0 0 0 1px rgb(22 22 22 / 0.08), 0 8px 24px -12px rgb(22 22 22 / 0.16);
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -92,9 +117,11 @@
     scroll-behavior: auto;
   }
 
-  .motion-safe-float,
-  .motion-safe-pulse {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
+    transition: none !important;
   }
 }
 

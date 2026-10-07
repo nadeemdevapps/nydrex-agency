@@ -4,13 +4,13 @@ import { LogoMark } from "@/components/logo";
 export function BentoStudio() {
   return (
     <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-2">
-      <div className="flex items-center justify-center rounded-[1.8rem] border border-border bg-card p-6 shadow-border sm:p-8">
+      <div className="flex items-center justify-center rounded-2xl border border-border bg-card p-6 shadow-border sm:p-8">
         <div className="rotate-[-8deg]">
           <LogoMark className="size-14 sm:size-20 shadow-border" />
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-[1.8rem] bg-ink">
+      <div className="overflow-hidden rounded-2xl bg-ink">
         <svg viewBox="0 0 200 200" className="size-full text-primary" aria-hidden="true">
           <rect width="200" height="200" fill="var(--color-ink)" />
           <path
@@ -30,7 +30,7 @@ export function BentoStudio() {
         </svg>
       </div>
 
-      <div className="col-span-2 row-span-2 flex flex-col justify-between overflow-hidden rounded-[1.8rem] bg-primary p-5 text-primary-foreground sm:p-8">
+      <div className="col-span-2 row-span-2 flex flex-col justify-between overflow-hidden rounded-2xl bg-primary p-5 text-primary-foreground sm:p-8">
         <p className="font-mono text-xs tracking-widest uppercase opacity-70">
           Inside a Nydrex system
         </p>
@@ -45,7 +45,7 @@ export function BentoStudio() {
         </p>
       </div>
 
-      <div className="rounded-[1.8rem] border border-border bg-card p-5 shadow-border">
+      <div className="rounded-2xl border border-border bg-card p-5 shadow-border">
         <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
           New module
         </p>
@@ -63,7 +63,7 @@ export function BentoStudio() {
         </div>
       </div>
 
-      <div className="flex items-center justify-center rounded-[1.8rem] border border-border bg-card shadow-border">
+      <div className="flex items-center justify-center rounded-2xl border border-border bg-card shadow-border">
         <div className="relative">
           <Bookmark className="size-10 text-ink sm:size-12" strokeWidth={1.25} />
           <Bell className="absolute -right-2 -bottom-1 size-5 text-ink sm:size-6" strokeWidth={1.5} />

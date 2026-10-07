@@ -3,3 +3,12 @@ node_modules/
 .github_repo
 .env
 .env.*
+.vercel/
+.output/
+.nitro/
+.tanstack/
+dist/
+screenshots/
+*.tsbuildinfo
+.grok/preview.log
+.grok/preview.pid

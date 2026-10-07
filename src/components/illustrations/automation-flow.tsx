@@ -1,94 +1,71 @@
+import {
+  ArrowDown,
+  ArrowRight,
+  Bell,
+  Blocks,
+  Cable,
+  ClipboardList,
+  Monitor,
+  Wrench,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { LogoMark } from "@/components/logo";
+
 export function AutomationFlow() {
   return (
     <div
-      className="relative overflow-hidden rounded-[2rem] border border-border bg-mist p-6 sm:p-8"
+      className="overflow-hidden rounded-2xl border border-border bg-mist p-6 sm:p-10"
       aria-hidden="true"
     >
-      <svg
-        className="absolute inset-0 size-full text-border"
-        preserveAspectRatio="none"
-      >
-        <line
-          x1="18%"
-          y1="30%"
-          x2="48%"
-          y2="48%"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeDasharray="4 6"
-        />
-        <line
-          x1="48%"
-          y1="52%"
-          x2="78%"
-          y2="28%"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <line
-          x1="50%"
-          y1="58%"
-          x2="76%"
-          y2="72%"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <line
-          x1="22%"
-          y1="68%"
-          x2="46%"
-          y2="55%"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeDasharray="4 6"
-        />
-      </svg>
-
-      <Node className="absolute top-[12%] left-[8%] w-36" label="Business problem" tone="card" />
-      <Node className="absolute top-[58%] left-[10%] w-32" label="Existing tools" tone="card" />
-      <Node
-        className="absolute top-[38%] left-[38%] w-40"
-        label="Nydrex"
-        tone="mint"
-        plus
-      />
-      <Node className="absolute top-[10%] right-[8%] w-36" label="Web application" tone="ink" />
-      <Node className="absolute right-[10%] bottom-[12%] w-36" label="Automation" tone="card" />
-      <Node className="absolute top-[42%] right-[34%] hidden w-28 sm:block" label="Dashboard" tone="card" />
-
-      <div className="pointer-events-none relative h-72 sm:h-80" />
+      <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+        One connected system
+      </p>
+      <div className="mt-8 flex flex-col items-center gap-5 md:flex-row md:gap-4">
+        <div className="w-full space-y-3 md:flex-1">
+          <Node label="Business problem" note="Understand the work" icon={ClipboardList} />
+          <Node label="Existing tools" note="Connect what you already use" icon={Wrench} />
+        </div>
+        <Connector />
+        <div className="flex w-full items-center gap-4 rounded-2xl bg-primary p-5 text-primary-foreground md:w-auto md:flex-1">
+          <LogoMark className="size-10 shrink-0" />
+          <div>
+            <p className="text-lg font-medium">Nydrex</p>
+            <p className="mt-1 text-xs">Plan. Build. Connect.</p>
+          </div>
+        </div>
+        <Connector />
+        <div className="w-full space-y-3 md:flex-1">
+          <Node label="Web application" note="A place to get the work done" icon={Monitor} />
+          <Node label="Dashboard" note="See what needs attention" icon={Blocks} />
+          <Node label="Automation" note="The next handoff happens" icon={Cable} />
+        </div>
+      </div>
+      <p className="mt-8 flex items-center gap-2 text-xs text-muted-foreground">
+        <Bell className="size-3.5" /> Information reaches the right person, at the right step.
+      </p>
     </div>
   );
 }
 
-function Node({
-  className,
-  label,
-  tone,
-  plus,
-}: {
-  className?: string;
-  label: string;
-  tone: "card" | "mint" | "ink";
-  plus?: boolean;
-}) {
-  const tones = {
-    card: "bg-card text-foreground border-border",
-    mint: "bg-primary text-primary-foreground border-transparent",
-    ink: "bg-secondary text-secondary-foreground border-transparent",
-  } as const;
+function Connector() {
   return (
-    <div
-      className={`flex items-center gap-2 rounded-2xl border px-3 py-2.5 text-sm font-medium shadow-border ${tones[tone]} ${className ?? ""}`}
-    >
-      {plus ? (
-        <span className="flex size-6 items-center justify-center rounded-full bg-ink text-xs text-secondary-foreground">
-          +
-        </span>
-      ) : (
-        <span className="size-2.5 rounded-full bg-current opacity-40" />
-      )}
-      {label}
+    <span className="text-muted-foreground">
+      <ArrowDown className="size-5 md:hidden" strokeWidth={1.25} />
+      <ArrowRight className="hidden size-5 md:block" strokeWidth={1.25} />
+    </span>
+  );
+}
+
+function Node({ label, note, icon: Icon }: { label: string; note: string; icon: LucideIcon }) {
+  return (
+    <div className="flex items-center gap-3 rounded-xl bg-card p-4 text-foreground shadow-border">
+      <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-mist">
+        <Icon className="size-4" strokeWidth={1.5} />
+      </span>
+      <div>
+        <p className="text-sm font-medium">{label}</p>
+        <p className="mt-1 text-xs text-muted-foreground">{note}</p>
+      </div>
     </div>
   );
 }

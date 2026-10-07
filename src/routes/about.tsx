@@ -26,7 +26,7 @@ function AboutPage() {
         </section>
 
         <section className="px-5 sm:px-8">
-          <div className="mx-auto max-w-6xl rounded-[2rem] bg-secondary px-8 py-14 text-secondary-foreground sm:px-14">
+          <div className="mx-auto max-w-6xl rounded-2xl bg-secondary px-8 py-14 text-secondary-foreground sm:px-14">
             <p className="font-mono text-xs tracking-widest text-primary uppercase">
               Principle
             </p>
@@ -45,7 +45,7 @@ function AboutPage() {
             {founders.map((f) => (
               <li
                 key={f.name}
-                className="rounded-[1.6rem] border border-border bg-card p-7 shadow-border"
+                className="rounded-xl border border-border bg-card p-7 shadow-border"
               >
                 <div className="flex size-14 items-center justify-center rounded-2xl bg-mist text-2xl font-medium">
                   {f.name.slice(0, 1)}

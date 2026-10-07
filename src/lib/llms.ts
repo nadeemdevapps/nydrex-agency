@@ -107,7 +107,6 @@ Primary WhatsApp: ${founders[0].whatsapp}
 }
 
 export function sitemapXml(origin: string) {
-  const today = "2026-10-07";
   const urls = [
     { loc: "/", priority: "1.0" },
     { loc: "/services", priority: "0.9" },
@@ -119,7 +118,6 @@ export function sitemapXml(origin: string) {
     .map(
       (u) => `  <url>
     <loc>${origin}${u.loc}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${u.priority}</priority>
   </url>`,
@@ -142,8 +140,19 @@ Sitemap: ${origin}/sitemap.xml
 
 export function originFromRequest(request: Request) {
   const url = new URL(request.url);
-  const forwarded = request.headers.get("x-forwarded-host");
-  const proto = request.headers.get("x-forwarded-proto") ?? url.protocol.replace(":", "");
-  if (forwarded) return `${proto}://${forwarded.split(",")[0]!.trim()}`;
+  const forwarded = request.headers.get("x-forwarded-host")?.split(",")[0]?.trim();
+  const proto =
+    request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim() ?? url.protocol.slice(0, -1);
+  if (
+    forwarded &&
+    /^[a-zA-Z0-9.[\]:-]+$/.test(forwarded) &&
+    (proto === "https" || proto === "http")
+  ) {
+    try {
+      return new URL(`${proto}://${forwarded}`).origin;
+    } catch {
+      return url.origin;
+    }
+  }
   return url.origin;
 }

@@ -67,6 +67,7 @@ export const nav = [
 
 export const services = [
   {
+    slug: "custom-software",
     navLabel: "Custom software",
     title: "Custom Software Development",
     short: "Systems shaped around how the work actually happens.",
@@ -84,7 +85,8 @@ export const services = [
     navLabel: "Web apps",
     title: "Web Application Development",
     short: "Browser-based products your team and customers can actually use.",
-    summary: "Customer portals, admin systems, booking flows and the software people open every day.",
+    summary:
+      "Customer portals, admin systems, booking flows and the software people open every day.",
     body: "We build web applications that sit in the browser and carry the real work: requests, records, approvals, reports. Fast enough to use on a busy day, structured enough to stay understandable as they grow.",
     points: [
       "Customer and partner portals",
@@ -97,7 +99,8 @@ export const services = [
     navLabel: "Automation",
     title: "Automation & Integrations",
     short: "Move information once. Let the system do the rest.",
-    summary: "Connect forms, CRMs, inventories and notifications so people stop copying data by hand.",
+    summary:
+      "Connect forms, CRMs, inventories and notifications so people stop copying data by hand.",
     body: "Automation is useful when it removes a repeated, error-prone step — not when it adds another dashboard to check. We connect the tools you already use and design the path information should take.",
     points: [
       "Form to system to notification flows",
@@ -123,7 +126,8 @@ export const services = [
     navLabel: "Mobile",
     title: "Mobile Products",
     short: "The same system, carried in a pocket.",
-    summary: "Mobile-first products for customers or field teams — not a stripped-down afterthought.",
+    summary:
+      "Mobile-first products for customers or field teams — not a stripped-down afterthought.",
     body: "When the work happens away from a desk, the product has to live on a phone. We build mobile products that use the same underlying system as the rest of the business, so field and office stay in sync.",
     points: [
       "Customer-facing mobile products",
@@ -136,7 +140,8 @@ export const services = [
     navLabel: "Local systems",
     title: "Local Business Digital Systems",
     short: "Software that fits the counter, the floor and the back office.",
-    summary: "Digital systems for local operations: orders, staff, customers, inventory and daily work.",
+    summary:
+      "Digital systems for local operations: orders, staff, customers, inventory and daily work.",
     body: "Local businesses do not need a bloated platform. They need a system that matches the day: taking orders, tracking staff, keeping customers, watching stock. We build those systems so daily operations are easier to run.",
     points: [
       "Orders, customers and daily operations",
@@ -212,9 +217,6 @@ export const budgetOptions = [
 
 export function pageHead(title: string, description: string) {
   return {
-    meta: [
-      { title },
-      { name: "description", content: description },
-    ],
+    meta: [{ title }, { name: "description", content: description }],
   };
 }

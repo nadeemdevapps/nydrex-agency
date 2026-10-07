@@ -20,7 +20,7 @@ function Sheet({
       className={`w-56 rounded-2xl border border-border bg-card p-5 shadow-border ${className ?? ""}`}
     >
       <div className="flex items-start justify-between">
-        <p className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
+        <p className="font-mono text-micro tracking-widest text-muted-foreground uppercase">
           Case study
         </p>
         <span className="size-4 rounded-sm border border-border" />
@@ -30,7 +30,7 @@ function Sheet({
         <div className="h-2.5 w-1/2 rounded bg-mist" />
       </div>
       {featured ? (
-        <span className="mt-5 inline-flex rounded-full bg-primary px-2.5 py-1 font-mono text-[10px] text-primary-foreground">
+        <span className="mt-5 inline-flex rounded-full bg-primary px-2.5 py-1 font-mono text-micro text-primary-foreground">
           Preparing
         </span>
       ) : (

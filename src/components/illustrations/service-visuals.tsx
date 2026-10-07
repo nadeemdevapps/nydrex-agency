@@ -3,7 +3,7 @@ export function ServiceVisual({ slug }: { slug: string }) {
     case "custom-software":
       return (
         <Frame>
-          <p className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
+          <p className="font-mono text-micro tracking-widest text-muted-foreground uppercase">
             System map
           </p>
           <div className="mt-4 grid grid-cols-3 gap-2">
@@ -47,7 +47,7 @@ export function ServiceVisual({ slug }: { slug: string }) {
             {["Form", "API", "CRM"].map((l, i) => (
               <div key={l} className="flex items-center gap-2">
                 <span
-                  className={`flex size-12 items-center justify-center rounded-full text-[11px] font-medium ${i === 1 ? "bg-primary text-primary-foreground" : "border border-border"}`}
+                  className={`flex size-12 items-center justify-center rounded-full text-meta font-medium ${i === 1 ? "bg-primary text-primary-foreground" : "border border-border"}`}
                 >
                   {l}
                 </span>
@@ -55,7 +55,7 @@ export function ServiceVisual({ slug }: { slug: string }) {
               </div>
             ))}
           </div>
-          <p className="mt-4 font-mono text-[10px] text-muted-foreground">
+          <p className="mt-4 font-mono text-micro text-muted-foreground">
             then notify the right person
           </p>
         </Frame>
@@ -76,7 +76,7 @@ export function ServiceVisual({ slug }: { slug: string }) {
               </div>
             </div>
             <div className="rounded-xl bg-primary p-3">
-              <p className="font-mono text-[10px] text-primary-foreground/70">Focus</p>
+              <p className="font-mono text-micro text-primary-foreground/70">Focus</p>
               <p className="mt-2 text-lg font-medium text-primary-foreground">Now</p>
             </div>
           </div>
@@ -85,7 +85,7 @@ export function ServiceVisual({ slug }: { slug: string }) {
     case "mobile":
       return (
         <Frame>
-          <div className="mx-auto w-28 rounded-[1.4rem] border border-border p-2">
+          <div className="mx-auto w-28 rounded-xl border border-border p-2">
             <div className="mx-auto h-1 w-8 rounded-full bg-mist" />
             <div className="mt-3 space-y-2 rounded-xl bg-mist p-3">
               <div className="h-2 w-3/4 rounded bg-card" />
@@ -119,7 +119,7 @@ export function ServiceVisual({ slug }: { slug: string }) {
 
 function Frame({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-[1.6rem] border border-border bg-card p-5 shadow-border">
+    <div className="rounded-xl border border-border bg-card p-5 shadow-border">
       {children}
     </div>
   );
