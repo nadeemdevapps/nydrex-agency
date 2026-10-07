@@ -5,7 +5,7 @@ import { founders, pageHead, processSteps, site } from "@/lib/site";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
-  head: () => pageHead(site.titles.about, site.descriptions.about),
+  head: () => pageHead(site.titles.about, site.descriptions.about, "/about"),
 });
 
 function AboutPage() {

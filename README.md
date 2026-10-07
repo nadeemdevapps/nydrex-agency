@@ -16,7 +16,7 @@ Crawler resources: `/robots.txt`, `/sitemap.xml`, `/llms.txt` and `/llms-full.tx
 
 ## Project enquiry
 
-The form validates the brief locally, shows a review, and prepares a WhatsApp message addressed to Nadeem. The visitor sends the message in WhatsApp; preparing or copying a brief does not deliver it. Business and budget are optional. No enquiry data is stored on a server or in browser storage.
+The form validates the brief locally, shows a review, and prepares a WhatsApp message addressed to Nadeem. The visitor sends the message in WhatsApp; preparing or copying a brief does not deliver it. Business, email and budget are optional. A supplied email is validated. No enquiry data is stored on a server or in browser storage.
 
 All founder contacts come from `src/lib/site.ts`. No company email, client claims, testimonials, addresses or social accounts are invented. Accounts and database storage are disabled.
 
@@ -30,7 +30,7 @@ npm test
 npm run build
 ```
 
-`startup.sh` starts the development server, returns when it is already healthy, and supports the App Builder restart contract. Keep the environment wrapper and platform preview/branding integrations intact.
+`startup.sh` starts the development server, returns when it is already healthy, and supports the App Builder restart contract. Keep the environment wrapper and preview bridge intact. External Grok branding is disabled for the independent Nydrex site.
 
 To check the production output:
 
@@ -52,4 +52,14 @@ The browser smoke helper needs Playwright Chromium available in the environment.
 - Illustrations live in `src/components/illustrations/`.
 - The platform injector owns social metadata using `src/lib/og/site.json`.
 
-See `docs/AUDIT.md` for the final verification record. No public domain or hosting deployment has been configured as part of this audit.
+## Independent launch configuration
+
+The approved public URL is `https://nydrex.qd.je`, configured once in `src/lib/og/site.json`. Canonical links, structured data, crawler documents and the absolute share-card URL use that origin, including when testing through internal or Vercel preview hosts. Changing domains means updating that field and rebuilding.
+
+External Grok script injection is disabled with the supported `VITE_GROK_EXTENSIONS=0` flag and the baked `extensions: false` identity. The latter also works in a serverless deployment without workspace files or runtime environment flags. Existing preview tooling and `.grok` skills/references are retained. The browser's native install flow uses a Nydrex manifest, mint/ink icons and an Apple touch icon. The platform install tutorial is not intercepted for this independent site.
+
+Production HTML gets a fresh CSP nonce per response. Framework and JSON-LD scripts share that nonce; external scripts, objects and cross-origin frames are restricted. Inline styles remain allowed for component positioning. Nonce-bearing HTML is private and not cached. The server also supplies `nosniff`, referrer policy, permissions policy and `SAMEORIGIN` framing; `vercel.json` applies these base headers to static assets at the edge. Development permits Vite hot reload and the live-preview embedder.
+
+Unused auth, database, connector and multiplayer code and dependencies have been removed. No database migration runs during builds. The stable shell provider remains a passthrough. `.github/workflows/verify.yml` runs typecheck, tests, build and the brand gate for main pushes and pull requests.
+
+See `docs/AUDIT.md` for the verification record. Domain/DNS connection and public deployment have not been performed by this change.

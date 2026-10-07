@@ -5,7 +5,7 @@ import { founders, pageHead, primaryFounder, site } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
-  head: () => pageHead(site.titles.contact, site.descriptions.contact),
+  head: () => pageHead(site.titles.contact, site.descriptions.contact, "/contact"),
 });
 
 function ContactPage() {

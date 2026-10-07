@@ -5,7 +5,9 @@ export function organizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: site.name,
+    url: site.url,
     description: site.description,
+    logo: `${site.url}/icon-512.png`,
     founder: founders.map((f) => ({
       "@type": "Person",
       name: f.name,
@@ -26,6 +28,7 @@ export function websiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: site.name,
+    url: site.url,
     description: site.description,
   };
 }

@@ -7,7 +7,7 @@ import { pageHead, site } from "@/lib/site";
 
 export const Route = createFileRoute("/work")({
   component: WorkPage,
-  head: () => pageHead(site.titles.work, site.descriptions.work),
+  head: () => pageHead(site.titles.work, site.descriptions.work, "/work"),
 });
 
 function WorkPage() {

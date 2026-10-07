@@ -16,6 +16,7 @@ import {
   renderInstallPageHtml,
   renderWebManifest,
   snapshotOgIdentity,
+  readOgSite,
 } from "./grok-pwa-shared.mjs";
 
 export const GROK_OG_IDENTITY_ID = "virtual:grok-og-identity";
@@ -62,7 +63,7 @@ function serveGrokPwa(middlewares) {
       return;
     }
 
-    if (isInstallQuery(rawUrl) && isDocumentPath(pathOnly) && acceptsHtml(req.headers.accept)) {
+    if (readOgSite().extensions !== false && isInstallQuery(rawUrl) && isDocumentPath(pathOnly) && acceptsHtml(req.headers.accept)) {
       try {
         sendHtml(res, renderInstallPage(requestHost(req), rawUrl));
       } catch (err) {

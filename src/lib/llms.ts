@@ -138,7 +138,8 @@ Sitemap: ${origin}/sitemap.xml
 `;
 }
 
-export function originFromRequest(request: Request) {
+export function originFromRequest(request: Request, configuredOrigin: string = site.url) {
+  if (configuredOrigin) return new URL(configuredOrigin).origin;
   const url = new URL(request.url);
   const forwarded = request.headers.get("x-forwarded-host")?.split(",")[0]?.trim();
   const proto =

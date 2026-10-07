@@ -15,7 +15,7 @@ import { faqs, founders, pageHead, processSteps, services, site } from "@/lib/si
 
 export const Route = createFileRoute("/")({
   component: Home,
-  head: () => pageHead(site.titles.home, site.descriptions.home),
+  head: () => pageHead(site.titles.home, site.descriptions.home, "/"),
 });
 
 function Home() {

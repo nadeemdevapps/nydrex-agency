@@ -17,7 +17,8 @@ async function readModule(path, imports = {}) {
   }, exports);
   return exports;
 }
-const content = await readModule("../src/lib/site.ts");
+const identity = JSON.parse(await readFile(new URL("../src/lib/og/site.json", import.meta.url), "utf8"));
+const content = await readModule("../src/lib/site.ts", { "./og/site.json": { default: identity } });
 const enquiry = await readModule("../src/lib/enquiry.ts", { zod: { z }, "@/lib/site": content });
 const crawlers = await readModule("../src/lib/llms.ts", { "@/lib/site": content });
 const example = {
@@ -48,15 +49,20 @@ test("founder contacts match the supplied brief exactly", () => {
   );
 });
 
-test("optional business and budget may be omitted, while required fields are validated", () => {
+test("optional business, budget and email may be omitted, while required fields are validated", () => {
   assert.ok(enquiry.enquirySchema.safeParse(example).success);
-  for (const field of ["name", "phone", "email", "need", "details"]) {
+  for (const field of ["name", "phone", "need", "details"]) {
     assert.equal(
       enquiry.enquirySchema.safeParse({ ...example, [field]: "" }).success,
       false,
       field,
     );
   }
+  assert.ok(enquiry.enquirySchema.safeParse({ ...example, email: "" }).success);
+  assert.ok(enquiry.enquirySchema.safeParse({ ...example, email: "   " }).success);
+  assert.equal(enquiry.enquirySchema.safeParse({ ...example, email: "invalid" }).success, false);
+  assert.equal(enquiry.enquirySchema.safeParse({ ...example, email: "x".repeat(255) }).success, false);
+  assert.doesNotMatch(enquiry.formatEnquiryBrief({ ...example, email: "" }), /Email:/);
   for (const phone of ["abcdefghi", "-------", "123456", "1234567890123456", "1234567+"]) {
     assert.equal(enquiry.enquirySchema.safeParse({ ...example, phone }).success, false, phone);
   }
@@ -101,6 +107,7 @@ test("public origins respect valid proxy headers and reject malformed hosts", ()
       new Request("http://internal.test/", {
         headers: { "x-forwarded-host": "nydrex.example", "x-forwarded-proto": "https, http" },
       }),
+      "",
     ),
     "https://nydrex.example",
   );
@@ -109,7 +116,37 @@ test("public origins respect valid proxy headers and reject malformed hosts", ()
       new Request("http://internal.test/", {
         headers: { "x-forwarded-host": "bad.example&malformed" },
       }),
+      "",
     ),
     "http://internal.test",
   );
+});
+
+test("configured public domain wins over internal hosts and forwarded headers", () => {
+  assert.equal(crawlers.originFromRequest(new Request("https://preview.vercel.app/", { headers: { "x-forwarded-host": "attacker.example" } })), "https://nydrex.qd.je");
+  for (const path of ["/", "/services", "/work", "/about", "/contact"]) {
+    assert.deepEqual(content.pageHead("Title", "Description", path).links, [{ rel: "canonical", href: `https://nydrex.qd.je${path}` }]);
+  }
+  assert.deepEqual(content.pageHead("404", "Missing").links, []);
+});
+
+const seo = await readModule("../src/lib/seo.ts", { "@/lib/site": content });
+test("organization and website schema include the approved domain and existing logo", () => {
+  assert.equal(seo.organizationJsonLd().url, "https://nydrex.qd.je");
+  assert.equal(seo.organizationJsonLd().logo, "https://nydrex.qd.je/icon-512.png");
+  assert.equal(seo.websiteJsonLd().url, "https://nydrex.qd.je");
+});
+
+const security = await readModule("../src/lib/security.ts");
+test("production CSP uses unpredictable per-render nonces and restricts external scripts and frames", () => {
+  const nonce = security.createCspNonce();
+  assert.match(nonce, /^[a-f0-9]{32}$/);
+  assert.notEqual(security.createCspNonce(), nonce);
+  const policy = security.contentSecurityPolicy(nonce);
+  assert.ok(policy.includes(`script-src 'self' 'nonce-${nonce}'`));
+  assert.doesNotMatch(policy.split(";").find((part) => part.includes("script-src")), /unsafe-inline|unsafe-eval|https:/);
+  assert.match(policy, /object-src 'none'/);
+  assert.match(policy, /base-uri 'none'/);
+  assert.match(policy, /frame-ancestors 'self'$/);
+  assert.match(security.contentSecurityPolicy(nonce, true), /https:\/\/grok.com/);
 });

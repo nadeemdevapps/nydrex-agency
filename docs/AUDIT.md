@@ -1,48 +1,75 @@
-# Nydrex audit — 7 October 2026
+# Nydrex launch audit — 7 October 2026
 
-The existing five-page website was continued against `NYDREX_BUILD_BRIEF.md` and the supplied visual references.
+The independent-site pass follows commit `abec76c` and addresses the six requested
+pre-launch improvements. The website is verified as a production build; no public
+deployment or DNS change was made.
 
-## Fixed
+## Changes
 
-- Added the missing `custom-software` slug so service links, section navigation and its illustration resolve correctly.
-- Fixed desktop service-menu pointer boundaries, click/keyboard opening, Escape handling, focus restoration and closing after navigation.
-- Added a description, scrolling and explicit navigation closing to the mobile dialog.
-- Strengthened enquiry validation for international phone digits, bounded input lengths and valid service/budget choices.
-- Connected required fields and validation errors with accessible attributes; moved focus to the brief review heading.
-- Preserved the brief when editing; added clipboard success/failure feedback and clear wording about sending in WhatsApp.
-- Replaced overlapping absolute-positioned automation nodes with a responsive connected flow.
-- Removed inert buttons from the decorative interface composition; named switches and weekday controls and exposed selected/disabled states.
-- Self-hosted Outfit and IBM Plex Mono with their licenses; added reusable small-text/radius tokens and complete reduced-motion handling.
-- Added a social description through the existing platform identity file.
-- Fixed 404 page titles and descriptions and added `noindex` while preserving HTTP 404 status.
-- Hardened crawler origin handling for proxy headers and removed an unsupported hard-coded sitemap modification date.
-- Made startup work from its script directory and detach the server reliably.
-- Removed generated Vercel output from version control, preserving the locally built files.
-- Isolated generic platform identity tests from the website's actual assets; preserved the platform implementation and original tests.
+1. **External branding disabled.** The supported `VITE_GROK_EXTENSIONS=0` flag
+   and baked `extensions: false` identity prevent `extensions.js` injection,
+   including without runtime environment flags or workspace files. Platform
+   preview support and useful `.grok` skills/references remain.
+2. **Nydrex home-screen identity.** Manifest name/short name are Nydrex on every
+   host. Colors, 192/512px PNG icons and 180px Apple icon use the existing mark.
+   Independent visitors use native browser install UI, not the Grok tutorial.
+3. **Approved public origin.** `https://nydrex.qd.je` is the single configured
+   domain for all five canonicals, Organization/WebSite URL, Organization logo,
+   share card and robots/sitemap/AI documents. Untrusted forwarded hosts cannot
+   replace the configured domain.
+4. **Security headers.** Production SSR uses fresh 128-bit nonces; all framework
+   and JSON-LD scripts carry the corresponding nonce. CSP restricts script,
+   image, font, connection, framing, form, base and object sources. Inline styles
+   remain permitted for component positioning. HTML is private/no-store to avoid
+   nonce reuse. Server and Vercel edge config add nosniff, referrer, permissions
+   and framing policies. Development permits HMR and preview embedding.
+5. **Unused infrastructure removed.** Removed unused auth/database/connectors/
+   multiplayer code, auth migrations, database bootstrap/OAuth plugins and their
+   direct dependencies. Installation removed 126 dependency packages. The shell
+   passthrough provider, preview bridge and PWA/OG helpers remain. Added GitHub
+   Actions verification for pushes to main and pull requests.
+6. **Email optional.** Blank/whitespace email is accepted and omitted from the
+   WhatsApp brief. Supplied email is validated and included. Required phone and
+   other project fields still validate; edit/review behavior preserves values.
 
 ## Verification
 
-| Check                                                | Result                                                                                                                            |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Production build                                     | Passed                                                                                                                            |
-| TypeScript                                           | Passed                                                                                                                            |
-| Test suite                                           | 258 passed, 0 failed                                                                                                              |
-| ESLint for audited logic and test runners            | Passed                                                                                                                            |
-| Brand check                                          | Passed, 0 warnings                                                                                                                |
-| Five pages in development, desktop and mobile        | Visible content, no horizontal overflow, clean console                                                                            |
-| Five pages from production build, desktop and mobile | Passed; no divergence from development baselines                                                                                  |
-| Visual screenshot review                             | All five pages reviewed on both viewport sizes                                                                                    |
-| Desktop menu and service anchor                      | Pointer movement, keyboard, Escape and section navigation verified                                                                |
-| Mobile menu                                          | Focus trapping, Escape, closing and navigation verified                                                                           |
-| Enquiry form                                         | Required errors, rejected invalid phone, valid brief, WhatsApp URL and edit preservation verified                                 |
-| Clipboard flow                                       | Unavailable clipboard feedback verified                                                                                           |
-| FAQs and interface controls                          | Accordion, repeat switch, day selection and keyboard slider verified                                                              |
-| Founder contacts                                     | All three names, display numbers and WhatsApp destinations match the brief                                                        |
-| SEO and crawler routes                               | Unique metadata, valid Organization/WebSite JSON-LD, home-only FAQ JSON-LD, crawler responses and social image injection verified |
-| Custom 404                                           | Correct status, content, title and noindex verified                                                                               |
+| Check | Result |
+| --- | --- |
+| Production build | Pass |
+| TypeScript | Pass |
+| Unit/regression tests | 183 pass, 0 fail |
+| Targeted ESLint | Pass |
+| Brand gate | Pass, no warnings |
+| Five dev routes, desktop/mobile | HTTP 200, visible content, clean console, no overflow |
+| Five built routes, desktop/mobile | Pass, no divergence from dev baselines |
+| Visual inspection | All five pages at 1280×800 and 390×844 |
+| Production interactions under CSP | Optional-email handoff, review/edit and mobile menu/Escape pass |
+| Email validation | Blank accepted, invalid rejected, valid included |
+| Founder handoff | Nadeem's exact WhatsApp URL and encoded brief verified |
+| Canonicals/schema/OG | Approved domain on all five pages in dev and built output |
+| Production headers/nonces | Enforced CSP, same nonce on scripts, base headers and no-store verified |
+| Manifest and icons | Correct name/colors/asset dimensions, preview/custom/Vercel hosts |
+| Crawler documents | Correct approved-domain content |
+| Unknown route | HTTP 404, custom title and noindex |
+| Platform install query | Normal Nydrex home page for independent site |
 
-Browser screenshots and smoke verdicts are generated QA artifacts and are not committed. Browser QA used the `agent-browser` CLI and the repository smoke helper with a separately installed Chromium binary because this environment lacks the system libraries required by the default Playwright binary.
+The earlier 258-test result included suites belonging to the removed auth,
+connector, migration and multiplayer infrastructure. The current 183-test suite
+covers retained tooling plus additional Nydrex identity, enquiry, canonical,
+schema and CSP regressions. GitHub Actions is configured; remote run status is
+separate from these locally completed checks.
 
-## Delivery behavior
+QA screenshots/verdicts are under `/workspace/screenshots/launch-*`; production
+comparisons use `launch-built-*`. Icons were rasterized from the existing SVG,
+not replaced with a generated logo.
 
-The project brief is sent by the visitor in WhatsApp. There is no email delivery service, account system or database. The Work page intentionally shows Coming Soon. Public hosting and a public domain have not been configured by this audit.
+## Launch state
+
+`nydrex.qd.je` is configured in source. Hosting deployment, domain binding and DNS
+verification remain launch work. The contact flow prepares a local WhatsApp
+message; delivery happens only when the visitor presses Send in WhatsApp. No
+visitor data is stored or sent by the website itself.
+
+Security implementation references: [Vercel header configuration](https://vercel.com/docs/project-configuration/vercel-json)
+and [TanStack's CSP example](https://github.com/TanStack/router/tree/main/e2e/react-start/csp).

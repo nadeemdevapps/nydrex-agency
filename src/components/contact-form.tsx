@@ -158,13 +158,12 @@ export function ContactForm() {
             {...register("phone")}
           />
         </Field>
-        <Field label="Email" htmlFor="email" error={errors.email?.message}>
+        <Field label="Email" htmlFor="email" hint="Optional" error={errors.email?.message}>
           <Input
             id="email"
             type="email"
             autoComplete="email"
             maxLength={254}
-            required
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "email-error" : undefined}
             {...register("email")}

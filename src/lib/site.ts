@@ -1,5 +1,8 @@
+import identity from "./og/site.json";
+
 export const site = {
   name: "Nydrex",
+  url: identity.url,
   tagline: "Ideas become systems.",
   principle: "Make the system clearer than the problem it replaces.",
   short:
@@ -215,8 +218,9 @@ export const budgetOptions = [
   "$40,000+",
 ] as const;
 
-export function pageHead(title: string, description: string) {
+export function pageHead(title: string, description: string, path?: string) {
   return {
     meta: [{ title }, { name: "description", content: description }],
+    links: path ? [{ rel: "canonical", href: `${site.url}${path}` }] : [],
   };
 }

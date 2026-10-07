@@ -18,7 +18,10 @@ export const enquirySchema = z.object({
       const digits = phone.replace(/\D/g, "");
       return digits.length >= 7 && digits.length <= 15;
     }, "Please enter a valid phone number with 7 to 15 digits."),
-  email: z.string().trim().email("Please enter a valid email.").max(254),
+  email: z.string().trim().max(254).refine(
+    (email) => email === "" || z.email().safeParse(email).success,
+    "Please enter a valid email, or leave it blank.",
+  ),
   need: z.enum(needOptions, { error: "Please tell us what you need." }),
   budget: z.union([z.literal(""), z.enum(budgetOptions)]),
   details: z
@@ -37,7 +40,7 @@ export function formatEnquiryBrief(data: EnquiryValues) {
     `Name: ${data.name}`,
     `Business: ${data.business.trim() ? data.business.trim() : "—"}`,
     `WhatsApp / phone: ${data.phone}`,
-    `Email: ${data.email}`,
+    ...(data.email ? [`Email: ${data.email}`] : []),
     `What I need: ${data.need}`,
     `Budget: ${data.budget.trim() ? data.budget.trim() : "To be discussed"}`,
     "",

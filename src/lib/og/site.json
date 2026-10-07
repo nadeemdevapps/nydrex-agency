@@ -1,5 +1,27 @@
 {
   "title": "Nydrex",
   "description": "Custom software, web apps and automation for businesses.",
-  "card": "custom"
+  "card": "custom",
+  "extensions": false,
+  "pwa": {
+    "name": "Nydrex",
+    "short_name": "Nydrex",
+    "background_color": "#F5F5F2",
+    "theme_color": "#C6EF7A",
+    "icons": [
+      {
+        "src": "/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+      }
+    ]
+  },
+  "url": "https://nydrex.qd.je"
 }
