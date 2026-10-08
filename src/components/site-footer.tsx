@@ -6,13 +6,13 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-12">
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-4">
           <Logo />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
             {site.longDescription}
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
+        <div className="grid grid-cols-2 gap-10 sm:grid-cols-[0.75fr_1fr_1.5fr] lg:col-span-8">
           <div>
             <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
               Pages
@@ -56,7 +56,7 @@ export function SiteFooter() {
               ))}
             </ul>
           </div>
-          <div className="col-span-2 sm:col-span-1">
+          <div className="col-span-2 min-w-0 sm:col-span-1">
             <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
               Founders
             </p>
@@ -69,6 +69,12 @@ export function SiteFooter() {
                     className="text-sm text-muted-foreground hover:text-foreground"
                   >
                     {f.phoneDisplay}
+                  </a>
+                  <a
+                    href={`mailto:${f.email}`}
+                    className="mt-1 block text-sm break-words text-muted-foreground hover:text-foreground hover:underline"
+                  >
+                    {f.email}
                   </a>
                 </li>
               ))}

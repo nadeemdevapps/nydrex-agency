@@ -14,10 +14,7 @@ export function CtaBand({
       <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl bg-secondary px-8 py-14 text-secondary-foreground sm:px-14 sm:py-16">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
-            <p className="font-mono text-xs tracking-widest text-primary uppercase">
-              Start a project
-            </p>
-            <h2 className="mt-4 text-4xl font-medium tracking-tight sm:text-5xl">
+            <h2 className="text-4xl font-medium tracking-tight sm:text-5xl">
               {title}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-secondary-foreground/70">

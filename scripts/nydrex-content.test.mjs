@@ -40,11 +40,11 @@ test("all six services have unique anchors, including custom software", () => {
 
 test("founder contacts match the supplied brief exactly", () => {
   assert.deepEqual(
-    content.founders.map(({ name, phoneDisplay, whatsapp }) => ({ name, phoneDisplay, whatsapp })),
+    content.founders.map(({ name, phoneDisplay, email, whatsapp }) => ({ name, phoneDisplay, email, whatsapp })),
     [
-      { name: "Nadeem", phoneDisplay: "+92 325 1473646", whatsapp: "https://wa.me/923251473646" },
-      { name: "Moazam", phoneDisplay: "+92 325 5701685", whatsapp: "https://wa.me/923255701685" },
-      { name: "Abdullah", phoneDisplay: "+92 318 0290447", whatsapp: "https://wa.me/923180290447" },
+      { name: "Abdullah", phoneDisplay: "+92 318 0290447", email: "mabdullahsamad105@gmail.com", whatsapp: "https://wa.me/923180290447" },
+      { name: "Nadeem", phoneDisplay: "+92 325 1473646", email: "nadeem.devapps@gmail.com", whatsapp: "https://wa.me/923251473646" },
+      { name: "Moazam", phoneDisplay: "+92 325 5701685", email: "moazam.tech@gmail.com", whatsapp: "https://wa.me/923255701685" },
     ],
   );
 });
@@ -76,14 +76,17 @@ test("optional business, budget and email may be omitted, while required fields 
   );
 });
 
-test("WhatsApp handoff preserves punctuation, multiline text and international contact", () => {
+test("WhatsApp handoff greets the Nydrex community and routes to Moazam while preserving the brief", () => {
   const data = {
     ...example,
     name: "A & B",
     details: "A CRM integration.\nKeep + signs, & punctuation and Urdu: سلام",
   };
   const url = new URL(enquiry.enquiryWhatsAppUrl(data));
-  assert.equal(url.origin + url.pathname, "https://wa.me/923251473646");
+  assert.equal(url.origin + url.pathname, "https://wa.me/923255701685");
+  assert.equal(content.primaryFounder.name, "Moazam");
+  assert.deepEqual(content.founders.filter((founder) => founder.primary).map((founder) => founder.name), ["Moazam"]);
+  assert.ok(url.searchParams.get("text").startsWith("Hello Nydrex community, I would like to start a project with Nydrex.\n"));
   assert.equal(url.searchParams.get("text"), enquiry.formatEnquiryBrief(data));
   assert.match(url.searchParams.get("text"), /Budget: To be discussed/);
 });
@@ -134,6 +137,9 @@ const seo = await readModule("../src/lib/seo.ts", { "@/lib/site": content });
 test("organization and website schema include the approved domain and existing logo", () => {
   assert.equal(seo.organizationJsonLd().url, "https://nydrex.qd.je");
   assert.equal(seo.organizationJsonLd().logo, "https://nydrex.qd.je/icon-512.png");
+  assert.equal(seo.organizationJsonLd().contactPoint.telephone, "+923255701685");
+  assert.match(crawlers.llmsTxt("https://nydrex.qd.je"), /Primary WhatsApp: https:\/\/wa.me\/923255701685/);
+  assert.match(crawlers.llmsFullTxt("https://nydrex.qd.je"), /Primary WhatsApp: https:\/\/wa.me\/923255701685/);
   assert.equal(seo.websiteJsonLd().url, "https://nydrex.qd.je");
 });
 

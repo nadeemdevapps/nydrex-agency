@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { Check, Paperclip, UserPlus } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function ComponentBoard() {
   const [happy, setHappy] = useState(7);
@@ -79,7 +80,7 @@ export function ComponentBoard() {
         </div>
       </BoardCard>
 
-      <BoardCard>
+      <BoardCard className="flex items-center justify-center">
         <div className="rounded-2xl border border-border bg-mist p-4 text-center">
           <p className="text-sm font-medium">To your attention</p>
           <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
@@ -193,9 +194,9 @@ export function ComponentBoard() {
   );
 }
 
-function BoardCard({ children }: { children: ReactNode }) {
+function BoardCard({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className="rounded-xl border border-border bg-card p-5 shadow-border min-w-0">
+    <div className={cn("rounded-xl border border-border bg-card p-5 shadow-border min-w-0", className)}>
       {children}
     </div>
   );

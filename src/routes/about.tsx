@@ -13,10 +13,7 @@ function AboutPage() {
     <SiteShell>
       <main id="main">
         <section className="mx-auto max-w-6xl px-5 pt-16 pb-12 sm:px-8">
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            About
-          </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-medium tracking-tight sm:text-6xl">
+          <h1 className="max-w-3xl text-4xl font-medium tracking-tight sm:text-6xl">
             Small team. Direct involvement.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
@@ -27,10 +24,7 @@ function AboutPage() {
 
         <section className="px-5 sm:px-8">
           <div className="mx-auto max-w-6xl rounded-2xl bg-secondary px-8 py-14 text-secondary-foreground sm:px-14">
-            <p className="font-mono text-xs tracking-widest text-primary uppercase">
-              Principle
-            </p>
-            <blockquote className="mt-4 max-w-3xl text-3xl font-medium tracking-tight sm:text-4xl">
+            <blockquote className="max-w-3xl text-3xl font-medium tracking-tight sm:text-4xl">
               {site.principle}
             </blockquote>
           </div>
@@ -55,6 +49,9 @@ function AboutPage() {
                 <div className="mt-6 space-y-1.5 text-sm">
                   <a href={`tel:${f.phoneTel}`} className="block hover:underline">
                     {f.phoneDisplay}
+                  </a>
+                  <a href={`mailto:${f.email}`} className="block break-words text-muted-foreground hover:text-foreground hover:underline">
+                    {f.email}
                   </a>
                   <a href={f.whatsapp} className="block text-muted-foreground hover:text-foreground">
                     WhatsApp

@@ -16,10 +16,7 @@ function ServicesPage() {
     <SiteShell>
       <main id="main">
         <section className="mx-auto max-w-6xl px-5 pt-16 pb-10 sm:px-8">
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            Services
-          </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-medium tracking-tight sm:text-6xl">
+          <h1 className="max-w-3xl text-4xl font-medium tracking-tight sm:text-6xl">
             Custom systems, built around the work.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
@@ -50,10 +47,7 @@ function ServicesPage() {
           >
             <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-2">
               <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h2 className="mt-3 text-3xl font-medium tracking-tight">{s.title}</h2>
+                <h2 className="text-3xl font-medium tracking-tight">{s.title}</h2>
                 <p className="mt-4 text-muted-foreground">{s.body}</p>
                 <ul className="mt-6 space-y-2">
                   {s.points.map((p) => (

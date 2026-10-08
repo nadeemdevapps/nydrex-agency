@@ -17,10 +17,7 @@ function WorkPage() {
         id="main"
         className="mx-auto flex min-h-[70vh] max-w-6xl flex-col items-center px-5 py-20 text-center sm:px-8"
       >
-        <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          Work
-        </p>
-        <div className="mt-10 w-full">
+        <div className="w-full">
           <WorkSoon />
         </div>
         <h1 className="mt-4 text-4xl font-medium tracking-tight sm:text-6xl">

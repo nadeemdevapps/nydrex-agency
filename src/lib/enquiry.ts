@@ -35,7 +35,7 @@ export type EnquiryValues = z.infer<typeof enquirySchema>;
 
 export function formatEnquiryBrief(data: EnquiryValues) {
   const lines = [
-    `Hello ${primaryFounder.name}, I would like to start a project with Nydrex.`,
+    "Hello Nydrex community, I would like to start a project with Nydrex.",
     "",
     `Name: ${data.name}`,
     `Business: ${data.business.trim() ? data.business.trim() : "—"}`,

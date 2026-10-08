@@ -1,4 +1,4 @@
-import { faqs, founders, site } from "@/lib/site";
+import { faqs, founders, primaryFounder, site } from "@/lib/site";
 
 export function organizationJsonLd() {
   return {
@@ -13,10 +13,11 @@ export function organizationJsonLd() {
       name: f.name,
       jobTitle: f.role,
       telephone: f.phoneTel,
+      email: f.email,
     })),
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: founders[0].phoneTel,
+      telephone: primaryFounder.phoneTel,
       contactType: "sales",
       availableLanguage: ["en"],
     },

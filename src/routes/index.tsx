@@ -25,10 +25,7 @@ function Home() {
       <main id="main">
         <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 pt-14 pb-8 sm:px-8 lg:grid-cols-2 lg:pt-20 lg:pb-12">
           <div>
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-              Founder-led software studio
-            </p>
-            <h1 className="mt-5 text-5xl font-medium tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="text-5xl font-medium tracking-tight sm:text-6xl lg:text-7xl">
               Ideas become{" "}
               <span className="underline decoration-primary decoration-4 underline-offset-8">
                 systems
@@ -66,10 +63,7 @@ function Home() {
 
         <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
           <div className="max-w-2xl">
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-              What we build
-            </p>
-            <h2 className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
               Software for the work that currently lives in inboxes, chats and spreadsheets.
             </h2>
           </div>
@@ -97,10 +91,7 @@ function Home() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="grid items-end gap-8 lg:grid-cols-2">
               <div>
-                <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-                  How a system fits
-                </p>
-                <h2 className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl">
+                <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
                   From the first request to the work that runs itself.
                 </h2>
               </div>
@@ -119,10 +110,7 @@ function Home() {
         </section>
 
         <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            How we work
-          </p>
-          <h2 className="mt-3 max-w-xl text-3xl font-medium tracking-tight sm:text-4xl">
+          <h2 className="max-w-xl text-3xl font-medium tracking-tight sm:text-4xl">
             A short path from the problem to a working system.
           </h2>
           <ol className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -144,10 +132,7 @@ function Home() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-                  The interface layer
-                </p>
-                <h2 className="mt-3 max-w-lg text-3xl font-medium tracking-tight sm:text-4xl">
+                <h2 className="max-w-lg text-3xl font-medium tracking-tight sm:text-4xl">
                   The kind of software people actually touch.
                 </h2>
               </div>
@@ -163,10 +148,7 @@ function Home() {
         </section>
 
         <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            Founders
-          </p>
-          <h2 className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
             Small team. Direct involvement.
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
@@ -189,6 +171,12 @@ function Home() {
                 >
                   {f.phoneDisplay}
                 </a>
+                <a
+                  href={`mailto:${f.email}`}
+                  className="mt-1 block text-sm break-words text-muted-foreground hover:text-foreground hover:underline"
+                >
+                  {f.email}
+                </a>
               </li>
             ))}
           </ul>
@@ -196,10 +184,7 @@ function Home() {
 
         <section className="mx-auto grid max-w-6xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-              Questions
-            </p>
-            <h2 className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
               Before you write.
             </h2>
             <p className="mt-4 text-muted-foreground">

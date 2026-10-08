@@ -1,4 +1,4 @@
-import { faqs, founders, processSteps, services, site } from "@/lib/site";
+import { faqs, founders, primaryFounder, processSteps, services, site } from "@/lib/site";
 
 export function llmsTxt(origin: string) {
   return `# Nydrex
@@ -12,7 +12,7 @@ ${site.longDescription}
 ${founders
   .map(
     (f) =>
-      `- ${f.name}, ${f.role} — ${f.phoneDisplay} — ${f.whatsapp}${f.primary ? " (primary contact for new projects)" : ""}`,
+      `- ${f.name}, ${f.role} — ${f.phoneDisplay} — ${f.email} — ${f.whatsapp}${f.primary ? " (primary contact for new projects)" : ""}`,
   )
   .join("\n")}
 
@@ -31,7 +31,7 @@ ${services.map((s) => `- ${s.title}: ${s.summary}`).join("\n")}
 ## Contact
 
 Start a project: ${origin}/contact
-Primary WhatsApp: ${founders[0].whatsapp}
+Primary WhatsApp: ${primaryFounder.whatsapp}
 
 ## Optional
 
@@ -60,6 +60,7 @@ ${founders
       `### ${f.name}
 - Role: ${f.role}
 - Phone / WhatsApp: ${f.phoneDisplay}
+- Email: ${f.email}
 - WhatsApp: ${f.whatsapp}
 ${f.primary ? "- Primary contact for new project conversations\n" : ""}`,
   )
@@ -102,7 +103,7 @@ Selected Nydrex projects and case studies are being prepared. No public case stu
 ## Contact
 
 Project enquiry form: ${origin}/contact
-Primary WhatsApp: ${founders[0].whatsapp}
+Primary WhatsApp: ${primaryFounder.whatsapp}
 `;
 }
 

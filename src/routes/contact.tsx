@@ -12,10 +12,7 @@ function ContactPage() {
   return (
     <SiteShell>
       <main id="main" className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          Contact
-        </p>
-        <h1 className="mt-4 max-w-3xl text-4xl font-medium tracking-tight sm:text-6xl">
+        <h1 className="max-w-3xl text-4xl font-medium tracking-tight sm:text-6xl">
           Tell us what you need built.
         </h1>
         <p className="mt-5 max-w-xl text-lg text-muted-foreground">
@@ -53,6 +50,12 @@ function ContactPage() {
                       className="mt-1 block text-sm text-muted-foreground hover:text-foreground"
                     >
                       {f.phoneDisplay}
+                    </a>
+                    <a
+                      href={`mailto:${f.email}`}
+                      className="mt-1 block text-sm break-words text-muted-foreground hover:text-foreground hover:underline"
+                    >
+                      {f.email}
                     </a>
                     <a
                       href={f.whatsapp}

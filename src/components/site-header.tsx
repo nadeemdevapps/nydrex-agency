@@ -7,15 +7,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { nav, services } from "@/lib/site";
 
-const serviceIcons: Record<string, string> = {
-  "custom-software": "01",
-  "web-apps": "02",
-  automation: "03",
-  "tools-dashboards": "04",
-  mobile: "05",
-  "local-business": "06",
-};
-
 export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const hash = useRouterState({ select: (s) => s.location.hash });
@@ -179,10 +170,7 @@ export function SiteHeader() {
           <div className="mx-auto grid max-w-6xl grid-cols-2 gap-2 px-8 py-6 lg:grid-cols-3">
             <div className="col-span-2 flex flex-col justify-between rounded-2xl bg-mist p-6 lg:col-span-1">
               <div>
-                <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-                  Product
-                </p>
-                <p className="mt-3 text-xl font-medium tracking-tight">
+                <p className="text-xl font-medium tracking-tight">
                   Software, systems and tools — built around the work.
                 </p>
               </div>
@@ -202,10 +190,7 @@ export function SiteHeader() {
                 onClick={() => setServicesOpen(false)}
                 className="group rounded-2xl p-4 transition-[background-color] duration-150 ease-out hover:bg-mist"
               >
-                <p className="font-mono text-meta tracking-widest text-muted-foreground uppercase">
-                  {serviceIcons[s.slug]}
-                </p>
-                <p className="mt-2 text-sm font-medium text-foreground">{s.title}</p>
+                <p className="text-sm font-medium text-foreground">{s.title}</p>
                 <p className="mt-1 text-sm leading-snug text-muted-foreground">{s.short}</p>
               </Link>
             ))}

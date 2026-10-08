@@ -10,10 +10,7 @@ export function NotFoundPage() {
         id="main"
         className="mx-auto flex min-h-[70vh] max-w-6xl flex-col justify-center px-5 py-24 sm:px-8"
       >
-        <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          404
-        </p>
-        <h1 className="mt-4 max-w-xl text-4xl font-medium tracking-tight sm:text-5xl">
+        <h1 className="max-w-xl text-4xl font-medium tracking-tight sm:text-5xl">
           This page is not here.
         </h1>
         <p className="mt-4 max-w-md text-muted-foreground">

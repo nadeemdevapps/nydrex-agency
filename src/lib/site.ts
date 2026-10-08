@@ -25,7 +25,7 @@ export const site = {
       "Custom software, web applications, automation, dashboards, mobile products and local business digital systems from Nydrex.",
     work: "Selected Nydrex projects and case studies will appear here. Start a project in the meantime.",
     about:
-      "Nydrex is a small founder-led team. Nadeem, Moazam and Abdullah stay directly involved in planning and development.",
+      "Nydrex is a small founder-led team. Abdullah, Nadeem and Moazam stay directly involved in planning and development.",
     contact:
       "Send a project brief to Nydrex, or message a founder on WhatsApp to start a conversation.",
     notFound: "This page is not available. Return to Nydrex to keep going.",
@@ -34,32 +34,35 @@ export const site = {
 
 export const founders = [
   {
-    name: "Nadeem",
-    role: "Founder",
-    phoneDisplay: "+92 325 1473646",
-    phoneTel: "+923251473646",
-    whatsapp: "https://wa.me/923251473646",
-    primary: true,
-  },
-  {
-    name: "Moazam",
-    role: "Founder",
-    phoneDisplay: "+92 325 5701685",
-    phoneTel: "+923255701685",
-    whatsapp: "https://wa.me/923255701685",
-    primary: false,
-  },
-  {
     name: "Abdullah",
+    email: "mabdullahsamad105@gmail.com",
     role: "Founder",
     phoneDisplay: "+92 318 0290447",
     phoneTel: "+923180290447",
     whatsapp: "https://wa.me/923180290447",
     primary: false,
   },
+  {
+    name: "Nadeem",
+    email: "nadeem.devapps@gmail.com",
+    role: "Founder",
+    phoneDisplay: "+92 325 1473646",
+    phoneTel: "+923251473646",
+    whatsapp: "https://wa.me/923251473646",
+    primary: false,
+  },
+  {
+    name: "Moazam",
+    email: "moazam.tech@gmail.com",
+    role: "Founder",
+    phoneDisplay: "+92 325 5701685",
+    phoneTel: "+923255701685",
+    whatsapp: "https://wa.me/923255701685",
+    primary: true,
+  },
 ] as const;
 
-export const primaryFounder = founders[0];
+export const primaryFounder = founders.find((founder) => founder.primary)!;
 
 export const nav = [
   { label: "Services", to: "/services" as const, hasMenu: true },
@@ -184,11 +187,11 @@ export const faqs = [
   },
   {
     q: "Who will I work with?",
-    a: "Nydrex is founder-led. Nadeem, Moazam and Abdullah stay directly involved in planning and development. You are not handed off to an anonymous production line.",
+    a: "Nydrex is founder-led. Abdullah, Nadeem and Moazam stay directly involved in planning and development. You are not handed off to an anonymous production line.",
   },
   {
     q: "How do we start a project?",
-    a: "Send a short project brief through the contact page, or message Nadeem on WhatsApp. We use that to understand what you need, then follow up to talk through the problem and the shape of a system.",
+    a: `Send a short project brief through the contact page, or message ${primaryFounder.name} on WhatsApp. We use that to understand what you need, then follow up to talk through the problem and the shape of a system.`,
   },
   {
     q: "Do you work with local businesses as well as larger products?",
@@ -196,7 +199,7 @@ export const faqs = [
   },
   {
     q: "How can I reach a founder directly?",
-    a: "Each founder is available on WhatsApp and phone. Nadeem is the primary contact for new project conversations. All three numbers are listed on the contact and about pages.",
+    a: `Each founder is available on WhatsApp and phone. ${primaryFounder.name} is the primary contact for new project conversations. All three numbers are listed on the contact and about pages.`,
   },
 ] as const;
 
