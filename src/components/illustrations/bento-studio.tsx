@@ -45,28 +45,30 @@ export function BentoStudio() {
         </p>
       </div>
 
-      <div className="rounded-2xl border border-border bg-card p-5 shadow-border">
-        <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          New module
-        </p>
-        <p className="mt-2 text-lg font-medium leading-tight">Security policies</p>
-        <p className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
-          <FileText className="size-3.5" /> 5 pages
-        </p>
-        <div className="mt-4 flex items-center justify-between">
-          <span className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-            +
-          </span>
-          <span className="rounded-full bg-sage-soft px-2.5 py-1 text-xs text-primary-foreground">
-            Internal
-          </span>
+      <div className="flex items-center justify-center rounded-2xl border border-border bg-card p-5 shadow-border">
+        <div className="w-full max-w-56 text-center">
+          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+            New module
+          </p>
+          <p className="mt-2 text-lg font-medium leading-tight">Security policies</p>
+          <p className="mt-2 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
+            <FileText className="size-3.5 shrink-0" /> 5 pages
+          </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+            <span className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
+              +
+            </span>
+            <span className="rounded-full bg-sage-soft px-2.5 py-1 text-xs text-primary-foreground">
+              Internal
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-center rounded-2xl border border-border bg-card shadow-border">
-        <div className="relative">
-          <Bookmark className="size-10 text-ink sm:size-12" strokeWidth={1.25} />
-          <Bell className="absolute -right-2 -bottom-1 size-5 text-ink sm:size-6" strokeWidth={1.5} />
+      <div className="flex items-center justify-center rounded-2xl border border-border bg-card p-5 shadow-border">
+        <div className="flex items-center justify-center gap-4">
+          <Bookmark className="size-10 shrink-0 text-ink sm:size-12" strokeWidth={1.25} />
+          <Bell className="size-6 shrink-0 text-ink sm:size-7" strokeWidth={1.5} />
         </div>
       </div>
     </div>
