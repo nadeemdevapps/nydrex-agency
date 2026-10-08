@@ -59,18 +59,18 @@ export function ComponentBoard() {
         </ul>
       </BoardCard>
 
-      <BoardCard>
-        <div className="flex items-start gap-4">
-          <div>
+      <BoardCard className="flex items-center justify-center">
+        <div className="flex w-full max-w-80 items-center gap-4">
+          <div className="shrink-0 text-center">
             <p className="text-2xl font-medium leading-none">08</p>
             <p className="mt-1 font-mono text-xs tracking-widest text-muted-foreground uppercase">
               Sun
             </p>
           </div>
-          <div className="flex-1 rounded-2xl border border-border bg-mist p-3">
+          <div className="min-w-0 flex-1 rounded-2xl border border-border bg-mist p-3 text-center">
             <p className="text-sm font-medium">Shift</p>
             <p className="font-mono text-xs text-muted-foreground">09:00 to 17:00</p>
-            <div className="mt-2 flex gap-1">
+            <div className="mt-2 flex flex-wrap justify-center gap-1">
               <span className="rounded-full bg-card px-2 py-0.5 text-xs">Floor</span>
               <span className="rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
                 Ops
@@ -142,9 +142,9 @@ export function ComponentBoard() {
         </div>
       </BoardCard>
 
-      <BoardCard>
-        <div className="flex items-stretch overflow-hidden rounded-2xl border border-border">
-          <div className="flex-1 p-4">
+      <BoardCard className="flex items-center justify-center">
+        <div className="flex w-full max-w-80 items-stretch overflow-hidden rounded-2xl border border-border">
+          <div className="flex min-w-0 flex-1 flex-col items-center justify-center p-4 text-center">
             <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
               Open queue
             </p>
@@ -152,7 +152,7 @@ export function ComponentBoard() {
               12
             </p>
           </div>
-          <div className="flex-1 border-l border-border p-4 text-xs text-muted-foreground">
+          <div className="flex min-w-0 flex-1 flex-col justify-center border-l border-border p-4 text-center text-xs text-muted-foreground">
             <p>8 ready</p>
             <p>3 waiting</p>
             <p>1 blocked</p>
@@ -196,7 +196,9 @@ export function ComponentBoard() {
 
 function BoardCard({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn("rounded-xl border border-border bg-card p-5 shadow-border min-w-0", className)}>
+    <div
+      className={cn("rounded-xl border border-border bg-card p-5 shadow-border min-w-0", className)}
+    >
       {children}
     </div>
   );

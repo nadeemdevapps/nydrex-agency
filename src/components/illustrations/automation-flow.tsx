@@ -82,7 +82,7 @@ export function AutomationFlow() {
 
   return (
     <div
-      className="overflow-hidden rounded-2xl border border-border bg-mist p-6 sm:p-10"
+      className={`energy-panel overflow-hidden rounded-2xl border border-border bg-mist p-6 sm:p-10 ${visible ? "energy-panel-visible" : ""}`}
       aria-hidden="true"
     >
       <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
@@ -94,18 +94,12 @@ export function AutomationFlow() {
             <g key={wire.id}>
               <path className="energy-wire-track" d={wire.path} />
               {[1, 2, 3].map((bead) => (
-                <g key={bead}>
-                  <path
-                    className={`energy-wire-pulse energy-wire-${wire.direction} energy-bead-${bead}`}
-                    d={wire.path}
-                    pathLength={100}
-                  />
-                  <path
-                    className={`energy-wire-pulse energy-wire-core energy-wire-${wire.direction} energy-bead-${bead}`}
-                    d={wire.path}
-                    pathLength={100}
-                  />
-                </g>
+                <path
+                  key={bead}
+                  className={`energy-wire-pulse energy-wire-${wire.direction} energy-bead-${bead}`}
+                  d={wire.path}
+                  pathLength={100}
+                />
               ))}
             </g>
           ))}

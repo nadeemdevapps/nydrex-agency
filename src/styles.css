@@ -156,6 +156,62 @@
   box-shadow: var(--shadow-border-hover);
 }
 
+.energy-panel {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-card) 55%, var(--color-mist)),
+    var(--color-mist)
+  );
+  box-shadow: inset 0 1px 0 var(--color-card);
+}
+
+.energy-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.energy-panel::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -40%;
+  left: 0;
+  width: 35%;
+  height: 180%;
+  border-radius: 50%;
+  border-right: 24px solid color-mix(in srgb, var(--color-card) 80%, transparent);
+  box-shadow: 16px 0 36px color-mix(in srgb, var(--color-card) 55%, transparent);
+  pointer-events: none;
+  opacity: 0;
+  animation: energy-panel-glass 7s ease-in-out infinite paused;
+}
+
+.energy-panel-visible::after {
+  animation-play-state: running;
+}
+
+@keyframes energy-panel-glass {
+  0%,
+  2% {
+    transform: translateX(-160%) rotate(-20deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.6;
+  }
+  40% {
+    transform: translateX(360%) rotate(-20deg);
+    opacity: 0.6;
+  }
+  48%,
+  100% {
+    transform: translateX(360%) rotate(-20deg);
+    opacity: 0;
+  }
+}
+
 .energy-flow {
   --energy-cycle: 7s;
   position: relative;
@@ -338,11 +394,6 @@
   color: var(--color-energy-green);
   stroke: currentColor;
   animation: energy-out var(--energy-cycle) linear infinite;
-}
-.energy-wire-core {
-  stroke: var(--color-card);
-  stroke-width: 3;
-  filter: none;
 }
 .energy-bead-2 {
   animation-delay: calc(var(--energy-cycle) * 0.04);

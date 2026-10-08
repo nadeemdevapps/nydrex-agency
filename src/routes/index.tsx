@@ -1,6 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/cta-band";
 import { JsonLd } from "@/components/json-ld";
@@ -79,9 +84,7 @@ function Home() {
                 className="bg-background p-6 transition-[background-color] duration-150 ease-out hover:bg-mist"
               >
                 <h3 className="text-base font-medium">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {s.summary}
-                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.summary}</p>
               </Link>
             ))}
           </div>
@@ -96,8 +99,8 @@ function Home() {
                 </h2>
               </div>
               <p className="max-w-md text-muted-foreground">
-                Most useful products are a path: someone asks, someone sees it, someone acts,
-                and the next time it happens without the same friction.
+                Most useful products are a path: someone asks, someone sees it, someone acts, and
+                the next time it happens without the same friction.
               </p>
             </div>
             <div className="mt-10">
@@ -116,13 +119,8 @@ function Home() {
           <ol className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step) => (
               <li key={step.n}>
-                <p className="font-mono text-xs tracking-widest text-muted-foreground">
-                  {step.n}
-                </p>
-                <h3 className="mt-3 text-xl font-medium">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {step.body}
-                </p>
+                <h3 className="text-xl font-medium">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
               </li>
             ))}
           </ol>
@@ -137,8 +135,8 @@ function Home() {
                 </h2>
               </div>
               <p className="max-w-sm text-sm text-muted-foreground">
-                Search, schedules, alerts, repeating work, assignment — small pieces that add
-                up to a system.
+                Search, schedules, alerts, repeating work, assignment — small pieces that add up to
+                a system.
               </p>
             </div>
             <div className="mt-10">
@@ -154,39 +152,23 @@ function Home() {
           <p className="mt-4 max-w-xl text-muted-foreground">
             Nydrex is led by three founders. You work with the people building the system.
           </p>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-3">
-            {founders.map((f) => (
-              <li
-                key={f.name}
-                className="rounded-xl border border-border bg-card p-6 shadow-border"
-              >
-                <div className="flex size-12 items-center justify-center rounded-2xl bg-primary font-semibold text-primary-foreground">
-                  {f.name.slice(0, 1)}
-                </div>
-                <p className="mt-5 text-lg font-medium">{f.name}</p>
-                <p className="text-sm text-muted-foreground">{f.role}</p>
-                <a
-                  href={f.whatsapp}
-                  className="mt-4 inline-block text-sm hover:underline"
-                >
-                  {f.phoneDisplay}
-                </a>
-                <a
-                  href={`mailto:${f.email}`}
-                  className="mt-1 block text-sm break-words text-muted-foreground hover:text-foreground hover:underline"
-                >
-                  {f.email}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <p className="mt-6 text-lg font-medium">
+            {founders.map((founder) => founder.name).join(" · ")}
+          </p>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            From planning to handover, the founders stay directly involved.
+            <Link
+              to="/about"
+              className="ml-1 text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground"
+            >
+              Get to know the team.
+            </Link>
+          </p>
         </section>
 
         <section className="mx-auto grid max-w-6xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
-              Before you write.
-            </h2>
+            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">Before you write.</h2>
             <p className="mt-4 text-muted-foreground">
               A few straight answers. If you would rather talk, WhatsApp is open.
             </p>

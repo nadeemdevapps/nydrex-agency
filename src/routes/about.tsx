@@ -17,8 +17,8 @@ function AboutPage() {
             Small team. Direct involvement.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            {site.longDescription} Planning and development stay with the founders
-            rather than disappearing into a long chain of handoffs.
+            {site.longDescription} Planning and development stay with the founders rather than
+            disappearing into a long chain of handoffs.
           </p>
         </section>
 
@@ -50,10 +50,16 @@ function AboutPage() {
                   <a href={`tel:${f.phoneTel}`} className="block hover:underline">
                     {f.phoneDisplay}
                   </a>
-                  <a href={`mailto:${f.email}`} className="block break-words text-muted-foreground hover:text-foreground hover:underline">
+                  <a
+                    href={`mailto:${f.email}`}
+                    className="block break-words text-muted-foreground hover:text-foreground hover:underline"
+                  >
                     {f.email}
                   </a>
-                  <a href={f.whatsapp} className="block text-muted-foreground hover:text-foreground">
+                  <a
+                    href={f.whatsapp}
+                    className="block text-muted-foreground hover:text-foreground"
+                  >
                     WhatsApp
                   </a>
                 </div>
@@ -69,11 +75,8 @@ function AboutPage() {
               {processSteps.map((step) => (
                 <li
                   key={step.n}
-                  className="grid gap-3 py-8 sm:grid-cols-[5rem_8rem_1fr] sm:items-baseline"
+                  className="grid gap-3 py-8 sm:grid-cols-[8rem_1fr] sm:items-baseline"
                 >
-                  <span className="font-mono text-xs tracking-widest text-muted-foreground">
-                    {step.n}
-                  </span>
                   <h3 className="text-lg font-medium">{step.title}</h3>
                   <p className="text-muted-foreground">{step.body}</p>
                 </li>
