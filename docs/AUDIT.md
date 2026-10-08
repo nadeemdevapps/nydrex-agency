@@ -73,3 +73,24 @@ visitor data is stored or sent by the website itself.
 
 Security implementation references: [Vercel header configuration](https://vercel.com/docs/project-configuration/vercel-json)
 and [TanStack's CSP example](https://github.com/TanStack/router/tree/main/e2e/react-start/csp).
+
+## Netlify preparation — 2026-10-08
+
+- Installed official `@netlify/vite-plugin-tanstack-start` and replaced the active
+  Vercel/Nitro plugin with the Netlify adapter. `netlify.toml` sets `npm run build`,
+  `dist/client`, Node 22, disabled Grok extensions, and base security headers.
+- Preserved `src/server.ts`, request-specific nonce CSP and no-store HTML policy.
+  The entry now calls existing PWA middleware directly; Netlify does not scan
+  Nitro's middleware directory. No UI, content, domain or brand assets changed.
+- Disabled unused local Edge Functions and database emulation. Production SSR
+  still targets standard Netlify functions.
+- Typecheck, production build, targeted ESLint and all 183 tests passed.
+- Dev and production desktop/mobile browser checks passed, with identical text,
+  no overflow, no console/page errors, and no baseline divergence.
+- Invoked generated `.netlify/v1/functions/server.mjs` directly: all five pages,
+  manifest, robots, sitemap and both LLM routes returned 200. Checked canonical
+  and OG origin, manifest name, absence of Grok script, security headers,
+  no-store HTML and matching CSP nonces on every script.
+- No deployment performed. Netlify project credentials and DNS are separate setup.
+- Adapter setup follows https://docs.netlify.com/build/frameworks/framework-setup-guides/tanstack-start/.
+- Node 22/npm 10 clean-install dry run passed after refreshing optional/peer lock entries in an empty fixture.

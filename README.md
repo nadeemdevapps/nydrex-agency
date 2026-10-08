@@ -40,7 +40,7 @@ node scripts/browser-smoke.mjs http://127.0.0.1:8081/ /workspace/screenshots/bui
 npm run preview:stop
 ```
 
-The browser smoke helper needs Playwright Chromium available in the environment. The production target is Vercel, configured in `vite.config.ts` and `vercel.json`; build output is generated into `.vercel/output` and intentionally excluded from Git.
+The browser smoke helper needs Playwright Chromium available in the environment. The production target is Netlify, using the official `@netlify/vite-plugin-tanstack-start` adapter. `netlify.toml` sets `npm run build` and `dist/client`. The adapter emits the SSR function under `.netlify/`; generated output is excluded from Git. No deployment is performed by the build.
 
 `npm test` includes content and enquiry regression checks. Generic platform identity tests run in an isolated fixture directory so they cannot accidentally read Nydrex's real share card and identity.
 
@@ -58,8 +58,10 @@ The approved public URL is `https://nydrex.qd.je`, configured once in `src/lib/o
 
 External Grok script injection is disabled with the supported `VITE_GROK_EXTENSIONS=0` flag and the baked `extensions: false` identity. The latter also works in a serverless deployment without workspace files or runtime environment flags. Existing preview tooling and `.grok` skills/references are retained. The browser's native install flow uses a Nydrex manifest, mint/ink icons and an Apple touch icon. The platform install tutorial is not intercepted for this independent site.
 
-Production HTML gets a fresh CSP nonce per response. Framework and JSON-LD scripts share that nonce; external scripts, objects and cross-origin frames are restricted. Inline styles remain allowed for component positioning. Nonce-bearing HTML is private and not cached. The server also supplies `nosniff`, referrer policy, permissions policy and `SAMEORIGIN` framing; `vercel.json` applies these base headers to static assets at the edge. Development permits Vite hot reload and the live-preview embedder.
+Production HTML gets a fresh CSP nonce per response. Framework and JSON-LD scripts share that nonce; external scripts, objects and cross-origin frames are restricted. Inline styles remain allowed for component positioning. Nonce-bearing HTML is private and not cached. The server also supplies `nosniff`, referrer policy, permissions policy and `SAMEORIGIN` framing; `netlify.toml` applies these base headers to static assets at the edge. Development permits Vite hot reload and the live-preview embedder.
 
 Unused auth, database, connector and multiplayer code and dependencies have been removed. No database migration runs during builds. The stable shell provider remains a passthrough. `.github/workflows/verify.yml` runs typecheck, tests, build and the brand gate for main pushes and pull requests.
 
 See `docs/AUDIT.md` for the verification record. Domain/DNS connection and public deployment have not been performed by this change.
+
+The custom `src/server.ts` entry runs the shared PWA middleware directly, preserving manifest and streamed OG/PWA head injection without Nitro middleware discovery. The old `vercel.json` is inactive for Netlify builds.

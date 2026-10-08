@@ -1,4 +1,5 @@
 import { createStartHandler, defaultStreamHandler } from "@tanstack/react-start/server";
+import grokPwaMiddleware from "../server/middleware/grok-pwa";
 import { contentSecurityPolicy } from "@/lib/security";
 
 // The framework passes the same request-specific nonce to its SSR scripts.
@@ -12,7 +13,11 @@ const handler = createStartHandler((context) => {
 
 export default {
   async fetch(request: Request) {
-    const response = await handler(request);
+    // Netlify calls this entry directly, without Nitro middleware discovery.
+    const response = (await grokPwaMiddleware(
+      { url: new URL(request.url), req: request },
+      () => handler(request),
+    )) as Response;
     const headers = new Headers(response.headers);
     headers.set("X-Content-Type-Options", "nosniff");
     headers.set("Referrer-Policy", "strict-origin-when-cross-origin");

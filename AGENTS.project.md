@@ -25,3 +25,8 @@ and unused auth/database/connector/multiplayer application code.
   script policy and preview framing are allowed only in development.
 - Before finishing source changes, run build, typecheck, relevant tests and
   desktop/mobile browser QA against dev and production output.
+
+- Active deployment target is Netlify via `@netlify/vite-plugin-tanstack-start`,
+  not the generic template Vercel/Nitro preset. `netlify.toml` owns build/static
+  headers; `src/server.ts` invokes the existing PWA middleware directly.
+  Preserve the SSR entry and nonce CSP. Preparation does not authorize deployment.

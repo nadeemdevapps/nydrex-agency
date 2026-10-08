@@ -12,3 +12,5 @@ screenshots/
 *.tsbuildinfo
 .grok/preview.log
 .grok/preview.pid
+
+.netlify/
